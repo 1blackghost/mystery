@@ -1,0 +1,102 @@
+html,body{
+    margin: 0px;
+}
+    .container{
+        height: 100%;
+        width: 100vw;
+        background-image: url("../images/BG.png");
+        background-size: cover;
+        background-repeat: no-repeat;
+    }
+    nav{
+        width: 100%;
+        height: fit-content;
+    }
+    .logo{
+        width: 45px;
+        height: fit-content;
+        padding: 20px;
+    }
+    h4{
+        color: black;
+        text-shadow:  2px 2px 10px white;
+        font-family: 'Roboto Mono', monospace;
+        text-align: center;
+        font-size: 25px;
+        margin-bottom: 0px;
+        margin-top: 0px;
+    }
+    h2{
+        color: white;
+        font-family: 'Roboto Mono', monospace;
+        font-size: 45px;
+        text-align: center;
+        margin-top: 10px;
+        margin-bottom: 10px;
+        font-weight: 500;
+
+    }
+    p{
+        text-align:center ;
+        color: grey;
+        font-family: 'Roboto Mono', monospace;
+        font-size: 15px;
+        margin: 15px auto;
+    }
+    .registration_info{
+        width: 90%;
+        margin: 10px 5%;
+        border: 2px solid whitesmoke;
+        border-radius: 20px;
+        display: flex;
+        flex-direction: column;
+    }
+    .fee,.price{
+        font-size: 18px;
+        color: rgba(245, 245, 245, 0.836);
+        padding: 10px 10px;
+        font-family: 'Roboto Mono', monospace;
+        font-weight: 500;
+    }
+    .register{
+        width: 90%;
+        margin: 20px 5%;
+        border: none;
+        outline: none;
+        height: fit-content;
+        background-color: white;
+        color: black;
+        font-family: 'Roboto Mono', monospace;
+        font-weight: bold;
+        font-size: 18px;
+        padding: 10px 0px;
+        border-radius: 10px;
+    }
+    .socials{
+        bottom: 30px;
+        width: fit-content;
+        height: fit-content;
+        display: flex;
+        flex-direction:column ;
+        margin-left:calc(50% - 100px );
+        margin-top: 15vh;
+    }
+    .contact{
+        width: 200px;
+        height: fit-content;
+        padding: 10px;
+        background-color: white;
+        color: black;
+        border-radius: 10px;
+        border: none;
+        outline: none;
+        font-family: 'Roboto Mono', monospace;
+        font-size: large;
+        font-weight: bold;
+    }
+    a{
+        text-decoration: none;
+        color: whitesmoke !important;
+        padding: 15px;
+        font-size: 22px;
+    }
