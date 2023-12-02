@@ -72,12 +72,14 @@ def game():
 				avg=avg/len(read_data)
 
 				l_data.append((0,session["name"],session["email"],session["level"],avg,session["pic"]))
-				sorted_data = sorted(l_data, key=lambda x: x[3], reverse=True)
-				
+				sorted_data = sorted(l_data, key=lambda x: (x[3], -x[4]), reverse=True)
+
 				for i, item in enumerate(sorted_data):
 					item = list(item)
 					item[0] = i + 1
 					sorted_data[i] = tuple(item)
+
+
 				leader.reset_leaderboard()
 				leader.insert_all_leaderboard(sorted_data)
 			users.update_user(session["email"],current_level=int(session["level"]))

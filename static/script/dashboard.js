@@ -70,13 +70,12 @@ $(document).ready(function(){
                 }
                 document.getElementById("congrats").style.display="block";
                 document.getElementById("overlay").style.display="block";
-                document.getElementById("levels").innerHTML=level;
                 $("#val").val("");
                 $("#profileImage").fadeOut(300, function() {
                     $(this).attr("src", response.filepath).fadeIn(300);
                 });
-
-                $("#level1").fadeOut(300, function() {
+                console.log(response.level);
+                $("#check").fadeOut(300, function() {
                     $(this).text(response.level).fadeIn(300);
                 });
 

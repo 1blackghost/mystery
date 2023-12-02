@@ -21,13 +21,14 @@ def reset_back_to_start() -> None:
     if a in ("y", "yes"):
         c.execute('''CREATE TABLE IF NOT EXISTS user
                     (id INTEGER PRIMARY KEY AUTOINCREMENT,
-                     username TEXT DEFAULT NULL,
-                     phone TEXT DEFAULT NULL,
-                     email TEXT,
-                     profile_url TEXT DEFAULT NULL,
-                     current_level INTEGER DEFAULT 1,
-                     tries INTEGER DEFAULT 5
-                     )''')
+                    username TEXT DEFAULT NULL,
+                    phone TEXT DEFAULT NULL,
+                    email TEXT UNIQUE,
+                    profile_url TEXT DEFAULT NULL,
+                    current_level INTEGER DEFAULT 1,
+                    tries INTEGER DEFAULT 5
+                    )''')
+
 
     conn.commit()
     conn.close()
