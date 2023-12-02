@@ -1,4 +1,4 @@
-function onNextButtonClick() {
+function doThis() {
 	console.log("hi");
     var phone = $('#phone').val();
     var name = $('#name').val();
@@ -8,6 +8,7 @@ function onNextButtonClick() {
         url: '/getDetails', 
         data: { phone: phone, name: name },
         success: function(response) {
+            document.getElementById("continue-with-google").style.display="block";
             $("#user-info-form").fadeOut(500, function() {
                 $("#continue-with-google").removeClass("hidden").hide().fadeIn(500);
             });
@@ -17,6 +18,18 @@ function onNextButtonClick() {
         }
     });
 }
+
+function onNextButtonClick(){
+    var phone = $('#phone').val();
+    var name = $('#name').val();
+    if (!(phone === "" || name === "")) {
+    
+        doThis();
+    }
+
+}
+
+
 function login(){
     var r=document.getElementById("rules");
     var l=document.getElementById("login");

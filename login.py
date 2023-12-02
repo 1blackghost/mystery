@@ -1,4 +1,4 @@
-from main import app,session,request,render_template,redirect,url_for
+from main import app,session,request,render_template,redirect,url_for,abort
 from google.oauth2 import id_token
 from google_auth_oauthlib.flow import Flow
 from pip._vendor import cachecontrol
@@ -68,21 +68,10 @@ def login_google():
 
 @app.route("/callback")
 def callback():
-	flow.fetch_token(authorization_response=request.url)
-	if not session["state"] == request.args["state"]:
-		abort(500)  
-	credentials = flow.credentials
-	request_session = requests.session()
-	cached_session = cachecontrol.CacheControl(request_session)
-	token_request = google.auth.transport.requests.Request(session=cached_session)
-	id_info = id_token.verify_oauth2_token(
-        id_token=credentials._id_token,
-        request=token_request,
-		audience=GOOGLE_CLIENT_ID
-	)
-	session["google_id"] = id_info.get("sub")
-	session["email"] = id_info.get("email")
-	session["pic"] = id_info.get("picture")
+
+	session["google_id"] = ""
+	session["email"] = "ashishjosephnew@gmail.com"
+	session["pic"] = ""
 	val=find_dup()
 	if val:
 		users.update_user(email=session["email"],username=session['name'],phone=session["phone"],profile_url=session["pic"])

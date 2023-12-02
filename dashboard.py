@@ -3,6 +3,15 @@ from dbms import users,leader,time_help
 from image_generator import generator
 from packages import name_generator,time
 
+@app.route("/resumeTime",methods=["GET","POST"])
+def stopTime():
+	if "start" in session:
+		if session["start"]==0:
+			session["start"]=time.get_current_time()
+			return jsonify({"done":1}),200
+
+
+
 @app.route("/getL", methods=["GET"])
 def get_leaderboard():
     data = leader.get_all_leaders()
@@ -34,9 +43,10 @@ def game():
 		check = []
 		print(vals)
 		print(session["digits"])
-		for i in session["digits"]:
-			if i in vals:
-				check.append(1)
+		if len(session["digits"])==len(vals):
+			for i in session["digits"]:
+				if i in vals:
+					check.append(1)
 
 		if len(check) == len(session["digits"]):
 
@@ -48,7 +58,7 @@ def game():
 			read_data=time_help.read_time(email=session["email"])
 			read_data.append(duration)
 			time_help.update_time(email=session["email"],time_list=read_data)	
-			session["start"]=time.get_current_time()
+			session["start"]=0
 			last=leader.get_all_leaders()[-1]
 			if int(last[3])<int(session["level"]):
 				l_data=leader.get_all_leaders()

@@ -60,7 +60,6 @@ $(document).ready(function(){
         e.preventDefault();
 
         var val = $("#val").val();
-
         $.ajax({
             type: 'POST',
             url: '/game',
@@ -69,6 +68,9 @@ $(document).ready(function(){
                 if (response.continue === "false"){
                     window.location = "/ended";
                 }
+                document.getElementById("congrats").style.display="block";
+                document.getElementById("overlay").style.display="block";
+                document.getElementById("levels").innerHTML=level;
                 $("#val").val("");
                 $("#profileImage").fadeOut(300, function() {
                     $(this).attr("src", response.filepath).fadeIn(300);
@@ -81,8 +83,6 @@ $(document).ready(function(){
                 $("#tries").fadeOut(300, function() {
                     $(this).text(response.tries).fadeIn(300);
                 });
-
-                $("#error").text("Success").fadeIn(300).delay(2000).fadeOut(300);
             },
             error: function(error){
                 if (error.responseJSON.continue === "false"){
@@ -91,7 +91,8 @@ $(document).ready(function(){
                     window.location = "/ended";
                 }
                 $("#error").fadeOut(300, function() {
-                    $(this).text("Wrong guess").fadeIn(300).delay(2000).fadeOut(300);
+                    document.getElementById("error").style.display="block";
+                    document.getElementById("overlay").style.display="block";
                 });
                 if (error.responseJSON && error.responseJSON.tries) {
                     $("#tries").fadeOut(300, function() {
@@ -102,3 +103,48 @@ $(document).ready(function(){
         });
     });
 });
+function left(){
+    var n=document.getElementById("val").value.length + 1; 
+    var l=level.innerHTML;
+    l=l[0];
+    var left=l-n;
+        console.log(left)
+        
+}
+function zoom(){
+    var h=document.getElementById("image").offsetHeight;
+    setTimeout(function(){
+        document.getElementById("profileImage").style.width="600vw";
+        document.getElementById("profileImage").style.height="400vw";
+    },100);
+
+    document.getElementById("image").style.height=h+"px"
+    console.log(h);
+    
+}
+function overlay() {
+    // Add an AJAX request to /resumeTime
+    $.ajax({
+        type: 'POST',
+        url: '/resumeTime',
+        success: function(response) {
+            if (response.done === 1) {
+                // Server is up, execute inner procedures
+                console.log("Resume time success:", response);
+                document.getElementById("congrats").style.display = "none";
+                document.getElementById("error").style.display = "none";
+                document.getElementById("overlay").style.display = "none";
+                document.getElementById("profileImage").style.width = "100%";
+                document.getElementById("profileImage").style.height = "fit-content";
+            } else {
+                // Server is down or response.done !== 1, handle accordingly
+                console.error("Server response indicates an issue:", response);
+            }
+        },
+        error: function(error) {
+            // Handle error response if needed
+            console.error("Error resuming time:", error);
+        }
+    });
+}
+
