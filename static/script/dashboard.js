@@ -108,29 +108,37 @@ $(document).ready(function(){
         });
     });
 });
-    $(document).ready(function() {
-        // Set the initial number of digits
-        var initialDigits = parseInt($("#check").text());
-        // Update the initial count
-        updateDigitsLeft();
 
-        // Function to update the number of digits left
-        function updateDigitsLeft() {
-            var currentLength = $("#val").val().length;
-            var digitsLeft = initialDigits - currentLength;
 
-            if (digitsLeft <= 0) {
-                $("#left").text("Digits left: 0");
-            } else {
-                $("#left").text("Digits left: " + digitsLeft);
-            }
-        }
+$(document).ready(function() {
+    // Set the initial number of digits
+    document.getElementById("left").innerHTML="Digits left: "+check.innerHTML;
 
-        // Event handler for input and keydown events
-        $("#val").on("input keydown", function() {
+    var initialDigits = parseInt($("#check").text());
+
+    // Function to update the number of digits left
+    function updateDigitsLeft() {
+        var currentLength = $("#val").val().length;
+        var digitsLeft = initialDigits - currentLength;
+
+        // Ensure digitsLeft is non-negative
+        digitsLeft = Math.max(0, digitsLeft);
+
+        $("#left").text("Digits left: " + digitsLeft);
+
+        // Check if the displayed count is not accurate, update it in a loop
+        while (parseInt($("#check").text()) !== initialDigits) {
+            initialDigits = parseInt($("#check").text());
             updateDigitsLeft();
-        });
+        }
+    }
+
+    // Event handler for input and keydown events
+    $("#val").on("input keydown", function() {
+        updateDigitsLeft();
     });
+});
+
     function zoom() {
         let overlays=document.getElementById("overlay").style;
         $('meta[name=viewport]').remove();
@@ -164,7 +172,7 @@ function bodhiet(){
     else{
         lead.height=bodheight+"px";
     }
-    document.getElementById("left").innerHTML="Digits left: "+check.innerHTML;
+    
 
 }
 function overlay() {
