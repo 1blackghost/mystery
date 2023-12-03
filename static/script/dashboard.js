@@ -75,6 +75,9 @@ $(document).ready(function(){
                 $("#profileImage").fadeOut(300, function() {
                     $(this).attr("src", response.filepath).fadeIn(300);
                 });
+                $("#img_puzzle").fadeOut(300, function() {
+                    $(this).attr("src", response.filepath).fadeIn(300);
+                });
                 console.log(response.level);
                 $("#check").fadeOut(300, function() {
                     $(this).text(response.level).fadeIn(300);
