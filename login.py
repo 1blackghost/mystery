@@ -70,7 +70,7 @@ def login_google():
 def callback():
 
 	session["google_id"] = ""
-	session["email"] = "ashishjosephnew@gmail.com"
+	session["email"] = "belfinbaby555@gmail.com"
 	session["pic"] = ""
 	val=find_dup()
 	if val:

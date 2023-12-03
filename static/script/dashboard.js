@@ -81,6 +81,7 @@ $(document).ready(function(){
                 console.log(response.level);
                 $("#check").fadeOut(300, function() {
                     $(this).text(response.level).fadeIn(300);
+                    document.getElementById("left").innerHTML="Digits left: "+check.innerHTML;
                 });
 
                 $("#tries").fadeOut(300, function() {
@@ -109,11 +110,15 @@ $(document).ready(function(){
 });
 function left(){
     var n=document.getElementById("val").value.length + 1; 
-    var l=level.innerHTML;
+    var l=check.innerHTML;
     l=l[0];
     var left=l-n;
-        console.log(left)
-        
+    if(left<=0){
+        document.getElementById("left").innerHTML="Digits left: 0";
+    }
+    else{
+        document.getElementById("left").innerHTML="Digits left: "+left;
+    }
 }
     function zoom() {
         let overlays=document.getElementById("overlay").style;
@@ -148,6 +153,7 @@ function bodhiet(){
     else{
         lead.height=bodheight+"px";
     }
+    document.getElementById("left").innerHTML="Digits left: "+check.innerHTML;
 
 }
 function overlay() {

@@ -42,15 +42,16 @@
 <div class="contain" >
     <div class="level_point">
         <span class="level"><i class="fa-solid fa-arrow-up-right-dots"></i> Level:<b id="check">{{lvl}}</b></span>
+        <span class="points">Participants: <b>250+</b></span>
     </div>
-    <div class="tries"><i class="fa-regular fa-clock"></i>  Chances left:<b id="tries">{{tries}}</b></div>
+    <div class="tries"><i class="fa-regular fa-clock"></i> No.of chances left:<b id="tries">{{tries}}</b></div>
     <div class="image_container" id="image">
         <p style="font-size: 10px; margin: 0; text-align: left;">**tap on image to zoom**</p>
     <img id="profileImage" onclick="zoom()" class="puzzle" src="{{filename}}">
     </div>
     <form id="gameForm">
-    <input type="number" id="val" onkeypress="left()" class="answer" placeholder="Enter the numbers found" name="levelInput" required>
-    <p id="left"></p>
+        <p id="left" ></p>
+    <input type="number" id="val" oninput="left()" class="answer" placeholder="Enter the numbers found" name="levelInput" required>
     <button type="submit" class="submit">Submit</button>
 </form>
 </div>

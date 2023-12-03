@@ -10,18 +10,18 @@
     <script src="https://kit.fontawesome.com/f20e323662.js" crossorigin="anonymous"></script>
     <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
 </head>
-<body>
+<body background="/static/images/BG.png">
     <div class="thank_you">
         <div class="bye_icon">
             <i class="fa-solid fa-heart"></i>
             <h1>Thank You for playing <br>have a nice day</h1>
-            <p style="margin-bottom: 10px; font-size: 15px;">Your Tries are finished</p>
-            <p style="margin-bottom: 10px; font-size: 15px;">Completed Level:<b id="level1">{{lvl}}</b></p>
+            <p style="margin-bottom: 10px; font-size: 15px;color: rgb(173, 173, 173);">Your Tries are finished</p>
+            <p style="margin-bottom: 10px; font-size: 15px;color: rgb(173, 173, 173);">Completed Level:<b id="level1">{{lvl}}</b></p>
         </div>
     </div>
-    <div class="leaderboard_page" id="leaderboardpage" style="display: block;opacity: 1;border-radius: 0;">
-        <h3>Top 10 in ranking</h3>
-        <table id="leaderboardTable">
+    <div class="leaderboard_page" id="leaderboardpage" style="display: block;opacity: 1;border-radius: 0;background-color: transparent;color: white;">
+        <h3 style="border-color: white;">Top 10 in ranking</h3>
+        <table id="leaderboardTable" style="border-color: white;">
             <thead>
                 <tr>
                     <th>Rank</th>

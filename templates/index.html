@@ -16,6 +16,7 @@
 				<span class="price">First Price:  <strong>₹500</strong></span>
 			</div>
 			<button class="register" onclick="window.location.href='/login'">Register Now</button>
+			<button class="view_leader" onclick="viewleader()">View Leaderboard</button>
 			<div class="socials">
 				<button class="contact">Contact Us</button>
 				<span style="padding: 10px; text-align: center;">
@@ -25,10 +26,33 @@
 				</span>
 			</div>
 		</div>
+		<div class="overlay" id="over">
+			<button class="close" id="close" onclick="clo()">Close</button>
+			<div class="leaderboard_page" id="leaderboardpage">
+				<h3>Top 10 in ranking</h3>
+				<table id="leaderboardTable">
+					<thead>
+						<tr>
+							<th>Rank</th>
+							<th>Name</th>
+							<th>Level</th>
+							<th>Avg. Time</th>
+							<th>Profile</th>
+						</tr>
+					</thead>
+					<tbody id="leaderboardBody">
+						<!-- Leaderboard rows will be added dynamically here -->
+					</tbody>
+				</table>
+			</div>
+		</div>
+		
 	<!--<p style="color:red">{{err}}</p>
 	<a href="/login">
 		play!
 	</a>-->
+	<script src="/static/script/dashboard.js"></script>
+	<script src="/static/script/index.js"></script>
 	<script src="https://kit.fontawesome.com/f20e323662.js" crossorigin="anonymous"></script>
 </body>
 </html>

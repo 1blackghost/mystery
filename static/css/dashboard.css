@@ -248,6 +248,17 @@ tr:last-child > td{
     margin-top: 50%;
     z-index: 999;
 }
+#left{
+    text-align: center;
+    font-size: 15px;
+    margin-top: 0px;
+    font-weight: 500;
+    color: rgb(255, 255, 255);
+    background-color: rgb(0, 0, 0);
+     font-family: 'Roboto Mono', monospace;
+     padding: 5px 10px;
+     border-radius: 5px;
+}
 h4{
     font-family: 'Roboto Mono', monospace;
     font-size:25px;

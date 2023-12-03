@@ -1,11 +1,11 @@
 html,body{
     margin: 0px;
-    background-color: rgb(212, 210, 210);
 }
 .thank_you{
     width: 100%;
     height: fit-content;
     text-align: center;
+    color: white;
 }
 i{
     font-size: 75px;
@@ -33,4 +33,20 @@ h1{
     font-family: 'Roboto Mono', monospace;
         text-align: center;
         font-size: 25px;
+        color: whitesmoke;
+}
+td{
+    border-color: white;
+}
+th{
+    border-color: white;
+}
+td:last-child{
+    border-color: white;
+}
+th:last-child{
+    border-color: white;
+}
+tr:last-child > td{
+        border-color: white;
 }
