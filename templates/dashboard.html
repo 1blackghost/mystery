@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0 maximum-scale=1.0, user-scalable=no">
-    <title>Your Web Page</title>
+    <title>Dashboard-MysteryDigits</title>
     <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/dashboard.css') }}">
     <link href="https://fonts.googleapis.com/css2?family=Roboto+Mono:wght@100;200;300;400;500;700&family=Roboto:wght@100;300;400;500;700&display=swap" rel="stylesheet">
     <script src="https://kit.fontawesome.com/f20e323662.js" crossorigin="anonymous"></script>
@@ -18,13 +18,13 @@
     <div class="right"><i class="fa-solid fa-check"></i></div>
     <h4>Congratulations</h4>
     <p>You have successfully completed level</p>
-    <p>Total points:250</p>
+    <p>The timer has been stopped!Pressing Next Level Will Resume The Timer</p>
     <button class="next_level" onclick="overlay()">Next Level</button>
 </div>
 <div class="error" id="error">
     <div class="right"><i class="fa-solid fa-xmark"></i></div>
     <h4>Error</h4>
-    <p>Operation could not be <br> Completed</p>
+    <p>Guess Failed <br> Tries Deducted!</p>
     <button class="next_level" onclick="overlay()">Try Again</button>
 </div>
 <img class="img_zoom" src="{{filename}}" id="img_puzzle"/>

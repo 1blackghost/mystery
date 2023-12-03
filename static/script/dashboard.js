@@ -108,18 +108,29 @@ $(document).ready(function(){
         });
     });
 });
-function left(){
-    var n=document.getElementById("val").value.length + 1; 
-    var l=check.innerHTML;
-    l=l[0];
-    var left=l-n;
-    if(left<=0){
-        document.getElementById("left").innerHTML="Digits left: 0";
-    }
-    else{
-        document.getElementById("left").innerHTML="Digits left: "+left;
-    }
-}
+    $(document).ready(function() {
+        // Set the initial number of digits
+        var initialDigits = parseInt($("#check").text());
+        // Update the initial count
+        updateDigitsLeft();
+
+        // Function to update the number of digits left
+        function updateDigitsLeft() {
+            var currentLength = $("#val").val().length;
+            var digitsLeft = initialDigits - currentLength;
+
+            if (digitsLeft <= 0) {
+                $("#left").text("Digits left: 0");
+            } else {
+                $("#left").text("Digits left: " + digitsLeft);
+            }
+        }
+
+        // Event handler for input and keydown events
+        $("#val").on("input keydown", function() {
+            updateDigitsLeft();
+        });
+    });
     function zoom() {
         let overlays=document.getElementById("overlay").style;
         $('meta[name=viewport]').remove();

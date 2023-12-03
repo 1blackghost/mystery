@@ -4,6 +4,10 @@
 		<link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/index.css') }}">
 		<meta name="viewport" content="width=device-width, initial-scale=1.0  maximum-scale=1.0, user-scalable=no">
 		<link href="https://fonts.googleapis.com/css2?family=Roboto+Mono:wght@100;200;300;400;500;700&family=Roboto:wght@100;300;400;500;700&display=swap" rel="stylesheet">
+		<script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
+		<title>Landing-MysteryDigits</title>
+
+
 	</head>
 	<body>
 		<div class="container">
@@ -17,14 +21,13 @@
 			</div>
 			<p id="erro"style="color:rgb(255, 61, 61); text-transform: uppercase; width: calc(100% - 60px); margin: 20px;border-radius:5px;">
 				{{err}}</p>
-			<button class="register" onclick="window.location.href='/login'">Register Now</button>
+			<button class="register" onclick="window.location.href='/login'">Play Now</button>
 			<button class="view_leader" onclick="viewleader()">View Leaderboard</button>
 			<div class="socials">
 				<button class="contact">Contact Us</button>
 				<span style="padding: 10px; text-align: center;">
-					<a href="#"><i class="fa fa-envelope-o" aria-hidden="true"></i></a>
-					<a href="#"><i class="fa fa-whatsapp" aria-hidden="true"></i></a>
-					<a href="#"><i class="fa fa-instagram" aria-hidden="true"></i></a>
+					<a href="mailto:ashishjosephnew@gmail.com"><i class="fa fa-envelope-o" aria-hidden="true"></i></a>
+					<a href="https://wa.me/918547413213?text="><i class="fa fa-whatsapp" aria-hidden="true"></i></a>
 				</span>
 			</div>
 		</div>

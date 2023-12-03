@@ -28,7 +28,9 @@ def get_leaderboard():
 
 @app.route("/ended")
 def end():
-	return render_template("end.html")
+	if "level" in session:
+		return render_template("end.html",levelV=session["level"])
+	return render_template("end.html",levelV="You Havent Played Yet.")
 
 
 @app.route("/game",methods=['GET','POST'])
