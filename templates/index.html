@@ -15,6 +15,8 @@
 				<span class="fee">Registration Fee:  Free</span>
 				<span class="price">First Price:  <strong>₹500</strong></span>
 			</div>
+			<p id="erro"style="display: none;color: white; background-color: rgb(255, 61, 61); text-transform: uppercase; width: calc(100% - 60px); margin: 20px;padding: 10px;border-radius:5px;">
+				{{err}}</p>
 			<button class="register" onclick="window.location.href='/login'">Register Now</button>
 			<button class="view_leader" onclick="viewleader()">View Leaderboard</button>
 			<div class="socials">
@@ -47,10 +49,6 @@
 			</div>
 		</div>
 		
-	<!--<p style="color:red">{{err}}</p>
-	<a href="/login">
-		play!
-	</a>-->
 	<script src="/static/script/dashboard.js"></script>
 	<script src="/static/script/index.js"></script>
 	<script src="https://kit.fontawesome.com/f20e323662.js" crossorigin="anonymous"></script>

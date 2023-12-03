@@ -15,6 +15,7 @@ function doThis() {
         },
         error: function(error) {
             $("#error").text("Error or Number Already exists!");
+            document.getElementById("erro").style.display="block"
         }
     });
 }
