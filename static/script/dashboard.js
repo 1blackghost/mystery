@@ -199,10 +199,14 @@ function overlay() {
         },
         error: function(error) {
             // Handle error response if needed
+            document.getElementById("img_puzzle").style.display = "none";
+
             console.error("Error resuming time:", error);
             document.getElementById("congrats").style.display = "none";
                 document.getElementById("error").style.display = "none";
                 document.getElementById("overlay").style.display = "none";
+                document.getElementById("img_puzzle").style.display = "block";
+
         }
     });
 }
