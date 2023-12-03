@@ -15,7 +15,7 @@ i{
     width: 75px;
     background-color: rgb(255, 255, 255);
     animation: heart 2s infinite;
-    margin-top: 20px;
+    margin-top: 10px;
     color: red;
 }
 @keyframes heart {
