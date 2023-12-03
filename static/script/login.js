@@ -39,3 +39,10 @@ function login(){
     setTimeout(function (){r.style.display="none"},500);
     
 }
+function bodhiet(){
+    let bodheight=document.body.offsetHeight;
+    let margin = document.getElementById("reg").style;
+    let back = document.getElementById("login").style;
+    margin.marginTop=bodheight-700+"px";
+    back.height=bodheight+"px";
+}

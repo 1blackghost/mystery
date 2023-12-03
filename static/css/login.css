@@ -187,7 +187,6 @@ html,body{
         display: block;
         text-align: center;
         width: 100%;
-        margin-top: calc(100vh - 650px);
         font-weight: bolder;
         color: rgb(94, 94, 94);
         font-size: medium;

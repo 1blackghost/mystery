@@ -66,12 +66,13 @@ html,body{
         display: block;
         opacity: 1;
         transition: 0.5s;
-        height: calc(100vh - 120px);
+        overflow-y: hidden;
     }
     .leaderboard_page{
         display: none;
         opacity: 0;
         transition: 0.5s;
+        height: fit-content;
     }
     h3{
         font-family: 'Roboto Mono', monospace;
@@ -85,11 +86,12 @@ html,body{
     }
 .contain{
     width: auto;
-    height:calc(100% - 100px);
     border: 2px dashed black;
     box-sizing: border-box;
     padding: 20px;
     text-align: center;
+    margin: auto;
+
 }
 .level_point{
     width: 100%;
@@ -99,7 +101,7 @@ html,body{
     color: rgb(71, 71, 71);
     font-size: 15px;
     height: 20px;
-    padding-bottom: 10px;
+    padding-bottom: 15px;
 }
 b{
     color: black;
@@ -113,7 +115,8 @@ b{
 .tries{
     font-family: 'Roboto Mono', monospace;
     color: rgb(71, 71, 71);
-    font-size: 12px;
+    font-size: 13px;
+    margin-bottom: 15px;
 }
 .puzzle{
     width: 100%;
@@ -168,13 +171,15 @@ table{
 th{
     border: 2px dashed black;
     border-right: 0cap solid rgba(0, 0, 0, 0);
+    padding: 10px 0px;
 }
 th:last-child{
     border-right: 2px dashed rgb(0, 0, 0);
-    width: 10%;
+    width: 25%;
 }
 td{
     border-left: 2px dashed black;
+    padding: 10px 0px;
 }
 td:last-child{
     border-right: 2px dashed black;
@@ -185,19 +190,30 @@ tr:last-child > td{
 .profile{
     width: 80%;
     border-radius: 100px;
-    margin: auto;
-    padding: 10px;
 }
 .overlay{
     position: absolute;
     width: 100vw;
-    height: 100vh;
+    height: 100%;
     top:0;
     left: 0;
     z-index: 99;
-    backdrop-filter: blur(4px);
+    backdrop-filter: blur(7px);
     background-color: rgba(0, 0, 0, 0.05);
     text-align: center;
+    display: none;
+}
+.close{
+    position: absolute;
+    background-color: transparent;
+    color: whitesmoke;
+    width: 50px;
+    height: 50px;
+    font-size: 25px;
+    z-index: 999;
+    display: none;
+    border: none;
+    outline: none;
 }
 .congartulation,.error{
     width: 75%;
@@ -209,6 +225,7 @@ tr:last-child > td{
     border-radius: 5px;
     box-shadow: 10px 10px 50px rgb(53, 52, 52);
     padding: 20px;
+    display: none;
 }
 .right{
     color: black;
@@ -222,6 +239,14 @@ tr:last-child > td{
     box-sizing: border-box;
     padding: 20px;
     margin: auto;
+}
+.img_zoom{
+    width: 100%;
+    height: fit-content;
+    position: absolute;
+    display: none;
+    margin-top: 50%;
+    z-index: 999;
 }
 h4{
     font-family: 'Roboto Mono', monospace;

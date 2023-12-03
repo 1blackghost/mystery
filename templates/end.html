@@ -1,5 +1,38 @@
-<html>
-
-
-<p>oops! your tries have been ended!</p>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0 maximum-scale=1.0, user-scalable=no">
+    <title>Your Web Page</title>
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/dashboard.css') }}">
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/end.css') }}">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto+Mono:wght@100;200;300;400;500;700&family=Roboto:wght@100;300;400;500;700&display=swap" rel="stylesheet">
+    <script src="https://kit.fontawesome.com/f20e323662.js" crossorigin="anonymous"></script>
+    <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
+</head>
+<body>
+    <div class="thank_you">
+        <div class="bye_icon">
+            <i class="fa-solid fa-heart"></i>
+            <h1>Thank You for playing <br>have a nice day</h1>
+        </div>
+    </div>
+    <div class="leaderboard_page" id="leaderboardpage" style="display: block;opacity: 1;border-radius: 0;">
+        <h3>Top 10 in ranking</h3>
+        <table id="leaderboardTable">
+            <thead>
+                <tr>
+                    <th>Rank</th>
+                    <th>Name</th>
+                    <th>Level</th>
+                    <th>Avg. Time</th>
+                    <th>Profile</th>
+                </tr>
+            </thead>
+            <tbody id="leaderboardBody">
+                <!-- Leaderboard rows will be added dynamically here -->
+            </tbody>
+        </table>
+        <script src="/static/script/dashboard.js"></script>
+</body>
 </html>

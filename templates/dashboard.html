@@ -9,14 +9,15 @@
     <script src="https://kit.fontawesome.com/f20e323662.js" crossorigin="anonymous"></script>
     <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
 </head>
-<body>
+<body onload="bodhiet()">
 <nav><img src="../static/images/Tantra Black.png" class="logo"><h2>Mystery Digits</h2></nav>
 
 <div class="overlay" id="overlay" style="display: none;">
+    <button class="close" id="close" onclick="clo()">✖</button>
 <div class="congartulation" id="congrats" style="display: none;">
     <div class="right"><i class="fa-solid fa-check"></i></div>
     <h4>Congratulations</h4>
-    <p>You have successfully completed level:<b id="levels"></b></p>
+    <p>You have successfully completed level</p>
     <p>Total points:250</p>
     <button class="next_level" onclick="overlay()">Next Level</button>
 </div>
@@ -26,23 +27,25 @@
     <p>Operation could not be <br> Completed</p>
     <button class="next_level" onclick="overlay()">Try Again</button>
 </div>
+<img class="img_zoom" src="{{filename}}" id="img_puzzle"/>
 </div>
 
 <div class="option">
-    <button class="home" id="home" onclick="opt('0','62px','grey','black','homepage','leaderboardpage')">Home</button>
-    <button class="leaderboard" id="leadbod" onclick="opt('calc(100% - 146px)','146px','black','grey','leaderboardpage','homepage')">Leaderboard</button>
+    <button class="home" id="home" onclick="opt('0','62px','grey','black','homepage','leaderboardpage','hidden')">Home</button>
+    <button class="leaderboard" id="leadbod" onclick="opt('calc(100% - 146px)','146px','black','grey','leaderboardpage','homepage','visible')">Leaderboard</button>
     <span class="selection_line" id="line"></span>
 </div>
 
 
-<div class="home_page" id="homepage">
+<div class="home_page" id="homepage" >
 <h3>Mystery Digit Quest</h3>
-<div class="contain">
+<div class="contain" >
     <div class="level_point">
         <span class="level"><i class="fa-solid fa-arrow-up-right-dots"></i> Level:<b id="check">{{lvl}}</b></span>
     </div>
     <div class="tries"><i class="fa-regular fa-clock"></i>  No. of tries left:<b id="tries">{{tries}}</b></div>
-    <div class="image_container" id="image" onclick="return false">
+    <div class="image_container" id="image">
+        <p style="font-size: 10px; margin: 0; text-align: left;">**tap on image to zoom**</p>
     <img id="profileImage" onclick="zoom()" class="puzzle" src="{{filename}}">
     </div>
     <form id="gameForm">
@@ -62,7 +65,7 @@
                 <th>Rank</th>
                 <th>Name</th>
                 <th>Level</th>
-                <th>Time</th>
+                <th>Avg. Time</th>
                 <th>Profile</th>
             </tr>
         </thead>

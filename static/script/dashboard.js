@@ -1,4 +1,4 @@
-function opt(le,wi,bl,bh,h,i){
+function opt(le,wi,bl,bh,h,i,d){
     var l=document.getElementById("line").style;
 
     l.left=le;
@@ -70,6 +70,7 @@ $(document).ready(function(){
                 }
                 document.getElementById("congrats").style.display="block";
                 document.getElementById("overlay").style.display="block";
+                document.body.style.overflowY="hidden";
                 $("#val").val("");
                 $("#profileImage").fadeOut(300, function() {
                     $(this).attr("src", response.filepath).fadeIn(300);
@@ -92,6 +93,7 @@ $(document).ready(function(){
                 $("#error").fadeOut(300, function() {
                     document.getElementById("error").style.display="block";
                     document.getElementById("overlay").style.display="block";
+                    document.body.style.overflowY="hidden";
                 });
                 if (error.responseJSON && error.responseJSON.tries) {
                     $("#tries").fadeOut(300, function() {
@@ -110,16 +112,40 @@ function left(){
         console.log(left)
         
 }
-function zoom(){
-    var h=document.getElementById("image").offsetHeight;
-    setTimeout(function(){
-        document.getElementById("profileImage").style.width="600vw";
-        document.getElementById("profileImage").style.height="400vw";
-    },100);
+    function zoom() {
+        let overlays=document.getElementById("overlay").style;
+        $('meta[name=viewport]').remove();
+        $('head').append( '<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">' );
+        overlays.display = "block";
+        overlays.backgroundColor = "rgba(0,0,0,0.5)";
+        document.getElementById("img_puzzle").style.display = "block";
+        document.getElementById("close").style.display = "block";
+        }
 
-    document.getElementById("image").style.height=h+"px"
-    console.log(h);
-    
+        function clo(){
+            console.log("?")
+            let overlay=document.getElementById("overlay").style;
+        $('meta[name=viewport]').remove();
+        $('head').append( '<meta name="viewport" content="width=device-width, initial-scale=1.0 maximum-scale=1.0, user-scalable=no">' );
+        overlay.display = "none";
+        document.getElementById("img_puzzle").style.display = "none";
+        document.getElementById("close").style.display = "none";
+       let w= document.body.offsetWidth;
+       console.log(w);
+        }
+
+function bodhiet(){
+    let bodheight=document.body.offsetHeight;
+    let home = document.getElementById("homepage").style;
+    let lead = document.getElementById("leaderboardpage").style;
+    home.height=bodheight-20+"px";
+    if(lead.height<=bodheight-200){
+        lead.height="fit-content";
+    }
+    else{
+        lead.height=bodheight+"px";
+    }
+
 }
 function overlay() {
     // Add an AJAX request to /resumeTime
@@ -133,11 +159,14 @@ function overlay() {
                 document.getElementById("congrats").style.display = "none";
                 document.getElementById("error").style.display = "none";
                 document.getElementById("overlay").style.display = "none";
+                document.body.style.overflowY="visible";
                 document.getElementById("profileImage").style.width = "100%";
                 document.getElementById("profileImage").style.height = "fit-content";
             } else {
                 // Server is down or response.done !== 1, handle accordingly
                 console.error("Server response indicates an issue:", response);
+                document.getElementById("error").style.display = "none";
+                document.getElementById("overlay").style.display = "none";
             }
         },
         error: function(error) {

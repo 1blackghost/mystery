@@ -1,0 +1,36 @@
+html,body{
+    margin: 0px;
+    background-color: rgb(212, 210, 210);
+}
+.thank_you{
+    width: 100%;
+    height: fit-content;
+    text-align: center;
+}
+i{
+    font-size: 75px;
+    padding: 20px;
+    border-radius: 250px;
+    height: 75px;
+    width: 75px;
+    background-color: rgb(255, 255, 255);
+    animation: heart 2s infinite;
+    margin-top: 20px;
+    color: red;
+}
+@keyframes heart {
+    0%{
+        transform: scale(1.07);
+    }
+    50%{
+        transform: scale(1);
+    }
+    100%{
+        transform: scale(1.07);
+    }
+}
+h1{
+    font-family: 'Roboto Mono', monospace;
+        text-align: center;
+        font-size: 25px;
+}
