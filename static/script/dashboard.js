@@ -172,6 +172,9 @@ function overlay() {
         error: function(error) {
             // Handle error response if needed
             console.error("Error resuming time:", error);
+            document.getElementById("congrats").style.display = "none";
+                document.getElementById("error").style.display = "none";
+                document.getElementById("overlay").style.display = "none";
         }
     });
 }
