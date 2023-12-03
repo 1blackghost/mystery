@@ -3,6 +3,10 @@ import random
 
 DATABASE_NAME = 'users.db'
 
+# Set check_same_thread to False for multi-threaded access
+def connect_to_database():
+    return sqlite3.connect(DATABASE_NAME, check_same_thread=False)
+
 def reset_back_to_start() -> None:
     """
     Reset the database to the initial state.
@@ -12,7 +16,7 @@ def reset_back_to_start() -> None:
     Returns:
         None
     """
-    with sqlite3.connect(DATABASE_NAME) as conn:
+    with connect_to_database() as conn:
         c = conn.cursor()
 
         print("[WARNING!] You need admin privilege to clear and reset the data! Are you sure? (y/n/yes/no)")
@@ -43,7 +47,7 @@ def insert_user(email: str, phone: str = "", username: str = "", profile_url: st
     Returns:
         None
     """
-    with sqlite3.connect(DATABASE_NAME) as conn:
+    with connect_to_database() as conn:
         c = conn.cursor()
 
         c.execute("INSERT INTO user (username, phone, email, profile_url, current_level, tries) VALUES (?, ?, ?, ?, ?, ?)",
@@ -56,7 +60,7 @@ def read_users() -> list:
     Returns:
         list: Users as a list of tuples.
     """
-    with sqlite3.connect(DATABASE_NAME) as conn:
+    with connect_to_database() as conn:
         c = conn.cursor()
 
         c.execute("SELECT * FROM user")
@@ -79,7 +83,7 @@ def update_user(email: str, username=None, phone=None, profile_url=None, current
     Returns:
         None
     """
-    with sqlite3.connect(DATABASE_NAME) as conn:
+    with connect_to_database() as conn:
         c = conn.cursor()
 
         update_query = "UPDATE user SET "
