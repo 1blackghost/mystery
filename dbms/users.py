@@ -12,26 +12,22 @@ def reset_back_to_start() -> None:
     Returns:
         None
     """
-    conn = sqlite3.connect(DATABASE_NAME)
-    c = conn.cursor()
+    with sqlite3.connect(DATABASE_NAME) as conn:
+        c = conn.cursor()
 
-    print("[WARNING!] You need admin privilege to clear and reset the data! Are you sure? (y/n/yes/no)")
-    a = input()
-    c.execute("DROP TABLE IF EXISTS user")
-    if a in ("y", "yes"):
-        c.execute('''CREATE TABLE IF NOT EXISTS user
-                    (id INTEGER PRIMARY KEY AUTOINCREMENT,
-                    username TEXT DEFAULT NULL,
-                    phone TEXT DEFAULT NULL,
-                    email TEXT UNIQUE,
-                    profile_url TEXT DEFAULT NULL,
-                    current_level INTEGER DEFAULT 1,
-                    tries INTEGER DEFAULT 5
-                    )''')
-
-
-    conn.commit()
-    conn.close()
+        print("[WARNING!] You need admin privilege to clear and reset the data! Are you sure? (y/n/yes/no)")
+        a = input()
+        c.execute("DROP TABLE IF EXISTS user")
+        if a in ("y", "yes"):
+            c.execute('''CREATE TABLE IF NOT EXISTS user
+                        (id INTEGER PRIMARY KEY AUTOINCREMENT,
+                        username TEXT DEFAULT NULL,
+                        phone TEXT DEFAULT NULL,
+                        email TEXT UNIQUE,
+                        profile_url TEXT DEFAULT NULL,
+                        current_level INTEGER DEFAULT 1,
+                        tries INTEGER DEFAULT 5
+                        )''')
 
 def insert_user(email: str, phone: str = "", username: str = "", profile_url: str = "", current_level: int = 1) -> None:
     """
@@ -47,15 +43,11 @@ def insert_user(email: str, phone: str = "", username: str = "", profile_url: st
     Returns:
         None
     """
-    conn = sqlite3.connect(DATABASE_NAME)
-    c = conn.cursor()
+    with sqlite3.connect(DATABASE_NAME) as conn:
+        c = conn.cursor()
 
-    c.execute("INSERT INTO user (username, phone, email, profile_url, current_level, tries) VALUES (?, ?, ?, ?, ?, ?)",
-              (username, phone, email, profile_url, current_level, 5))  # Use the passed current_level, tries default to 5
-
-    conn.commit()
-    conn.close()
-
+        c.execute("INSERT INTO user (username, phone, email, profile_url, current_level, tries) VALUES (?, ?, ?, ?, ?, ?)",
+                  (username, phone, email, profile_url, current_level, 5))  # Use the passed current_level, tries default to 5
 
 def read_users() -> list:
     """
@@ -64,13 +56,11 @@ def read_users() -> list:
     Returns:
         list: Users as a list of tuples.
     """
-    conn = sqlite3.connect(DATABASE_NAME)
-    c = conn.cursor()
+    with sqlite3.connect(DATABASE_NAME) as conn:
+        c = conn.cursor()
 
-    c.execute("SELECT * FROM user")
-    result = c.fetchall()
-
-    conn.close()
+        c.execute("SELECT * FROM user")
+        result = c.fetchall()
 
     return result
 
@@ -89,48 +79,44 @@ def update_user(email: str, username=None, phone=None, profile_url=None, current
     Returns:
         None
     """
-    conn = sqlite3.connect(DATABASE_NAME)
-    c = conn.cursor()
+    with sqlite3.connect(DATABASE_NAME) as conn:
+        c = conn.cursor()
 
-    update_query = "UPDATE user SET "
-    update_values = []
+        update_query = "UPDATE user SET "
+        update_values = []
 
-    if username is not None:
-        update_query += "username=?, "
-        update_values.append(username)
+        if username is not None:
+            update_query += "username=?, "
+            update_values.append(username)
 
-    if phone is not None:
-        update_query += "phone=?, "
-        update_values.append(phone)
+        if phone is not None:
+            update_query += "phone=?, "
+            update_values.append(phone)
 
-    if profile_url is not None:
-        update_query += "profile_url=?, "
-        update_values.append(profile_url)
+        if profile_url is not None:
+            update_query += "profile_url=?, "
+            update_values.append(profile_url)
 
-    if current_level is not None:
-        update_query += "current_level=?, "
-        update_values.append(current_level)
+        if current_level is not None:
+            update_query += "current_level=?, "
+            update_values.append(current_level)
 
-    if tries is not None:
-        update_query += "tries=?, "
-        update_values.append(tries)
+        if tries is not None:
+            update_query += "tries=?, "
+            update_values.append(tries)
 
-    # Remove the trailing comma and space
-    update_query = update_query.rstrip(", ")
+        # Remove the trailing comma and space
+        update_query = update_query.rstrip(", ")
 
-    # Add the WHERE clause to update based on the email
-    update_query += " WHERE email=?"
+        # Add the WHERE clause to update based on the email
+        update_query += " WHERE email=?"
 
-    # Add the email value to the update_values list
-    update_values.append(email)
+        # Add the email value to the update_values list
+        update_values.append(email)
 
-    # Execute the update query
-    c.execute(update_query, tuple(update_values))
+        # Execute the update query
+        c.execute(update_query, tuple(update_values))
 
-    conn.commit()
-    conn.close()
-
-# Additional function to generate UID
 def generate_uid() -> int:
     """
     Generate a random 6-digit UID.
