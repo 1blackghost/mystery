@@ -19,10 +19,26 @@ def get_leaderboard():
     modified_data = []
     for i in data:
         modified_tuple = list(i)
-        modified_tuple[4] = time.convert(i[4])
+        original_time = i[4]
+        
+        # Check if the time format is beyond a certain threshold
+        if is_time_format_invalid(original_time):
+            modified_tuple[4] = "Time Reg. Failed"
+        else:
+            modified_tuple[4] = time.convert(original_time)
+
         modified_data.append(tuple(modified_tuple))
     
     return jsonify(modified_data)
+
+def is_time_format_invalid(time_str):
+    # Define your threshold condition here
+    # For example, check if the time string length is greater than a certain value
+    threshold_length = 2  # Adjust this value based on your needs
+    val=str(time.convert(time_str))
+    val=val.split("h")[0]
+    
+    return len(val) > threshold_length
 
 
 
@@ -43,12 +59,14 @@ def game():
 		for i in val:
 			vals.append(str(i))
 		check = []
-		print(vals)
 		print(session["digits"])
 		if len(session["digits"])==len(vals):
 			for i in session["digits"]:
 				if i in vals:
+					index_to_replace = vals.index(i)
+					vals[index_to_replace] = -1
 					check.append(1)
+
 
 		if len(check) == len(session["digits"]):
 
